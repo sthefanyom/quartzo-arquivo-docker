@@ -1,0 +1,18 @@
+
+services:
+  api:
+    build: .
+    container_name: api_quartzo
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+            - QUARTZO_ENV=development77
+    networks:
+        - quartzo_network
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+networks:
+  quartzo_network:
+    driver: bridge
+
